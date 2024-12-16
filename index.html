@@ -68,15 +68,15 @@
                     consequat.
                 </p>
                 <div class="menbers__list">
-                    <div class="menbers--item">
+                    <div class="menbers__item">
                         <p class="menbers--name">Name</p>
                         <img src="./assets/img/band/member.jpg" alt="name" class="menbers--img">
                     </div>
-                    <div class="menbers--item">
+                    <div class="menbers__item">
                         <p class="menbers--name">Name</p>
                         <img src="./assets/img/band/member.jpg" alt="name" class="menbers--img">
                     </div>
-                    <div class="menbers--item">
+                    <div class="menbers__item">
                         <p class="menbers--name">Name</p>
                         <img src="./assets/img/band/member.jpg" alt="name" class="menbers--img">
                     </div>
@@ -86,31 +86,132 @@
             <!-- end about -->
 
             <!-- tour dates -->
-            <div class="content__section">
-                <h2 class="section__heading">TOUR DATES</h2>
-                <p class="section__sub-heading"> Remember to book your tickets!</p>
-                
-
-             </div>
-                <!-- end tour dates -->
-
-                <!-- contact -->
+            <div class="tour__section">
                 <div class="content__section">
-                    <h2 class="section__heading">CONTACT</h2>
-                    <p class="section__sub-heading">Fan? Drop a note!</p>
+                    <h2 class="section__heading text-white">TOUR DATES</h2>
+                    <p class="section__sub-heading text-white"> Remember to book your tickets!</p>
+                    <!-- Tickets -->
+                    <ul class="tickets__list">
+                        <li>September <span class="sold--out">Sold out</span></li>
+                        <li>Octeber <span class="sold--out">Sold out</span></li>
+                        <li>November <span class="quantity">3</span></li>
+                    </ul>
+                    <!-- Places -->
+                    <div class="places__list">
+                        <div class="place__item">
+                            <img src="/assets/img/places/newyork.jpg" alt="New York" class="place--img">
+                            <div class="place__body">
+                                <h3 class="place__heading">New York</h3>
+                                <p class="place__time">Fri 27 Nov 2016</p>
+                                <p class="place__desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="place__buy--btn js__buy--ticket">Buy Tickets</button>
+                            </div>
+                        </div>
+                        <div class="place__item">
+                            <img src="/assets/img/places/paris.jpg" alt="New York" class="place--img">
+                            <div class="place__body">
+                                <h3 class="place__heading">Paris</h3>
+                                <p class="place__time">Sat 28 Nov 2016</p>
+                                <p class="place__desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="place__buy--btn js__buy--ticket">Buy Tickets</button>
+                            </div>
+                        </div>
+                        <div class="place__item">
+                            <img src="/assets/img/places/sanfran.jpg" alt="New York" class="place--img">
+                            <div class="place__body">
+                                <h3 class="place__heading">San Francisco</h3>
+                                <p class="place__time">Sun 29 Nov 2016</p>
+                                <p class="place__desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="place__buy--btn js__buy--ticket">Buy Tickets</button>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
                 </div>
-                <!-- end contact -->
+            </div>
+            <!-- end tour dates -->
+
+            <!-- contact -->
+            <div class="content__section">
+                <h2 class="section__heading">CONTACT</h2>
+                <p class="section__sub-heading">Fan? Drop a note!</p>
+            </div>
+            <!-- end contact -->
+
+        </div>
+        <!-- end content -->
+
+        <!-- footer -->
+        <div id="footer">
+
+        </div>
+        <!-- end footer -->
+
+    </div>
+    <div class="modal js__modal">
+        <div class="modal__container is__modal__container">
+            <div class="modal__close js__modal--close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <header class="modal__header">
+                <i class="modal__header--icon fa-solid fa-suitcase"></i>
+                Tickets
+            </header>
+            <div class="modal__body">
+                <label for="ticket-quantity" class="modal__label">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Tickets, $15 per person
+                </label>
+                <input id="ticket-quantity" type="text" class="modal__input" placeholder="How many ?">
+
+                <label for="ticket-email" class="modal__label">
+                    <i class="fa-solid fa-user"></i>
+                    Send To
+                </label>
+                <input id="ticket-email" type="emailemail" class="modal__input" placeholder="Enter email...">
+                <button id="buy__tickets">
+                    Pay
+                    <i class="fa-solid fa-check"></i>
+                </button>
 
             </div>
-                <!-- end content -->
+            <footer class="modal__footer">
+                <p class="modal__help">Need <a href="">help?</a></p>
+            </footer>
+        </div>
+    </div>
+    <script >
 
-                <!-- footer -->
-                <div id="footer">
+        const buyBtns = document.querySelectorAll('.js__buy--ticket');
+        const modal = document.querySelector('.js__modal');
+        const closeBtn = document.querySelector('.js__modal--close');
+        const modalContainer = document.querySelector('.is__modal__container');
 
-                </div>
-                <!-- end footer -->
+        //hàm hiển thị modal
+        function showBuyTicket(){
+            modal.classList.add('open');
+        }
 
-            </div>
+        // hàm đóng modal
+        function closeBuyTicket(){
+            modal.classList.remove('open');
+        }
+
+        //lặp qua từng thẻ button và thêm sự kiện click
+        for(const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTicket);
+        }
+
+        //thêm sự kiện click vào button close
+        closeBtn.addEventListener('click', closeBuyTicket);
+
+        modal.addEventListener('click',closeBuyTicket);
+
+        modalContainer.addEventListener('click', function(event){
+            event.stopPropagation();
+        });
+
+    </script>
 </body>
 
 </html>
